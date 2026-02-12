@@ -8,8 +8,14 @@ export async function generateStaticParams() {
   return categories.map((category) => ({ category }));
 }
 
-export function generateMetadata({ params }: { params: { category: string } }): Metadata {
-  const category = decodeURIComponent(params.category);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const category = decodeURIComponent(resolvedParams.category);
+
   return {
     title: `${category} News`,
     description: `Browse ${category} stories from ${siteConfig.name}.`,
@@ -17,8 +23,13 @@ export function generateMetadata({ params }: { params: { category: string } }): 
   };
 }
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
-  const category = decodeURIComponent(params.category);
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
+  const resolvedParams = await params;
+  const category = decodeURIComponent(resolvedParams.category);
 
   if (!categories.includes(category as Category)) {
     notFound();
