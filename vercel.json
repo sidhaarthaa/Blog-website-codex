@@ -1,0 +1,3 @@
+{
+  "buildCommand": "node scripts/ensure-config.cjs && next build"
+}
