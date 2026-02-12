@@ -1,3 +1,5 @@
-import nextVitals from 'eslint-config-next/core-web-vitals.js';
+import nextVitalsImport from 'eslint-config-next/core-web-vitals.js';
 
-export default [...nextVitals];
+const nextVitals = nextVitalsImport?.default ?? nextVitalsImport;
+
+export default Array.isArray(nextVitals) ? nextVitals : [nextVitals];
