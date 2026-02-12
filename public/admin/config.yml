@@ -1,0 +1,43 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_ORG_OR_USER/Blog-website-codex
+  branch: main
+
+site_url: https://giga.ai/news
+display_url: https://giga.ai/news
+logo_url: https://giga.ai/news/favicon.ico
+
+publish_mode: editorial_workflow
+media_folder: public/uploads
+public_folder: /news/uploads
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: content/posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - {
+          label: Slug,
+          name: slug,
+          widget: string,
+          hint: Auto-generate from title (e.g. release-notes-april).,
+          pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Use lowercase letters, numbers, and hyphens only.']
+        }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Date, name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false }
+      - {
+          label: Category,
+          name: category,
+          widget: select,
+          options: ['Tech', 'AI Information', 'How To’s', 'Product Updates', 'Industry Insights']
+        }
+      - { label: Tags, name: tags, widget: list }
+      - { label: Cover Image, name: coverImage, widget: image, required: false }
+      - { label: Author, name: author, widget: string, required: false }
+      - { label: Content, name: body, widget: markdown }
