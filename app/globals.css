@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-white text-slate-900 antialiased;
+}
+
+a {
+  @apply text-slate-900;
+}
+
+.prose-content {
+  @apply leading-8 text-slate-700;
+}
+
+.prose-content h2 {
+  @apply mt-10 text-2xl font-semibold text-slate-900;
+}
+
+.prose-content h3 {
+  @apply mt-8 text-xl font-semibold text-slate-900;
+}
+
+.prose-content p {
+  @apply mt-5;
+}
+
+.prose-content ul {
+  @apply mt-5 list-disc pl-7;
+}
+
+.prose-content blockquote {
+  @apply mt-6 border-l-4 border-slate-300 pl-4 italic text-slate-600;
+}
+
+.prose-content pre {
+  @apply mt-6 overflow-x-auto rounded-md border border-slate-200 bg-slate-50 p-4 text-sm;
+}
